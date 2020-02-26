@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-11-26 16:32:02 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="pojo01.Student_kcsj" table="student_kcsj">
+        <id name="kscjID" type="java.lang.Integer">
+            <column name="kscjID" />
+            <generator class="assigned" />
+        </id>
+        
+        <property name="studentID" column="studentID" type="integer"></property>
+        <property name="courseID" column="courseID" type="integer"></property>
+        <property name="score" column="score" type="string"></property>
+        <property name="classID" column="classID" type="integer"></property>
+        <property name="kname" column="kname" type="java.lang.String"></property>
+        <property name="gettime" column="gettime"></property>
+        </class>
+</hibernate-mapping>

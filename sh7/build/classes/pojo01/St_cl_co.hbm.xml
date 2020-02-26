@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-11-26 16:32:02 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="pojo01.St_cl_co" table="st_cl_co">
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="native" />
+        </id>
+        <property name="courseID" column="courseID" type="integer"></property>
+        <property name="courseName" column="courseName" type="java.lang.String"></property>
+        <property name="term" column="term" type="integer"></property>
+        <property name="classID" column="classID" type="integer"></property>
+        <property name="className" column="className" type="java.lang.String"></property>
+        <property name="studentNumber" column="studentNumber" type="integer"></property>
+        <property name="count" column="count" type="integer"></property>
+        </class>
+</hibernate-mapping>

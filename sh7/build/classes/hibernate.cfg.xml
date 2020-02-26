@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+                                         "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+	<session-factory>
+		<!-- 连接数据库的基本信息 -->
+		<property name="connection.username">root</property>
+		<property name="connection.password"></property><!-- MySQL数据库的用户名 -->
+		<property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+		<property name="connection.url">jdbc:mysql://localhost:3306/sh</property>
+		
+		<!-- 解决中文乱码问题 -->
+		<property name="connection.useUnicode">true</property> 
+		<property name="connection.characterEncoding">UTF-8</property>
+		 
+		<!-- jdbc:mysql:///hibernate -->
+		<!-- 配置hibernate的基本信息 hibernate所使用的基本方言  -->
+		<!-- <property name="dialect">org.hibernate.dialect.MySQLInnoDBDialect</property> -->
+		<!-- 执行操作时是否在控制台打印 -->
+		<property name="show_sql">true</property>
+		<!-- 是否对sql格式化 -->
+		<property name="format_sql">true</property>
+		<!-- 指定自动生成数据表的策略 -->
+		<property name="hbm2ddl.auto">update</property>
+		<!-- 使用getCurrentSession方式打开会话 -->
+        <property name="hibernate.current_session_context_class">thread</property>
+		<!-- 设置连接池大小为100 -->
+		<property name="connection.pool_size">100</property>
+		<!-- 指定关联的.hbm.xml文件 -->
+		<mapping resource="pojo01/Student.hbm.xml"/>
+		<mapping resource="pojo01/Teacher.hbm.xml"/>
+		<mapping resource="pojo01/Kcsj_course.hbm.xml"/>
+		<mapping resource="pojo01/College.hbm.xml"/>
+		<mapping resource="pojo01/Course.hbm.xml"/>
+		<mapping resource="pojo01/Class.hbm.xml"/>
+		<mapping resource="pojo01/St_cl_co.hbm.xml"/>
+		<mapping resource="pojo01/Student_kcsj.hbm.xml"/>
+		<mapping resource="pojo01/Kcsj.hbm.xml"/>
+		
+		<!-- <mapping class="com.hibernateHello.News"/> -->
+	</session-factory>
+</hibernate-configuration>

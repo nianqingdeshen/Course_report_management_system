@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+        "http://struts.apache.org/dtds/struts-2.5.dtd">
+
+
+<struts>
+<!-- 开发者模式 -->
+<constant name="struts.devMove3x" value="true"></constant>
+	<!-- 配置扩展名 -->
+	<package name="action" extends="struts-default" namespace="/">
+	
+		<!-- （学生，管理员）退出登录 -->
+		<action name="exit1" class="action.UserAction" method="exit">
+			<result name="success">/login.jsp</result>
+		</action>
+		<!-- （老师）退出登录 -->
+		<action name="exit2" class="action.UserAction" method="exit">
+			<result name="success">/teacher/login.jsp</result>
+		</action>
+		
+		
+		<action name="goHomePage" class="action.StudentAction" method="goHomePage">
+			<result name="success">/home.jsp</result>
+		</action>
+		<action name="updown" class="action.FileUploadAction" method="updown">
+			<result name="success">/student/fileupload.jsp</result>
+		</action>
+		<action name="insert_kcsj_count" class="action.FileUploadAction" method="insert_kcsj_count">
+			<result name="success">/student/welcome.html</result>
+		</action>
+		<!-- 老师下载文件 -->
+		<action name="download" class="action.SimpleDownLoadAction" method="download">
+			<result name="success">/teacher/download.jsp</result>
+		</action>
+		<!-- 老师批改作业 -->
+		<action name="updateKcsj" class="action.SimpleDownLoadAction" method="updateKcsj">
+			<result name="success">/teacher/welcome.html</result>
+		</action>
+		<!-- 上传下载/student/fileupload.jsp -->
+		<action name="fileupload"
+			class="action.FileUploadAction">
+			<result name="success">/student/fileupload.jsp</result>
+		
+		<!-- 上传下载配置 -->
+		<interceptor-ref name="defaultStack"><!--引用拦截器 -->
+				<!--限制上传文件最大值为4M -->
+				<param name="fileUpload.maximumSize">4194304</param>
+				<!--限制上传文件的扩展名 -->
+				<param name="fileUpload.allowedExtensions">
+					.txt,.doc,.docx,.jpg
+				</param>
+				<!--限制上传文件的类型 -->
+				<param name="fileUpload.allowedTypes">
+					text/plain,application/msword,image/jpeg
+				</param>
+			</interceptor-ref>
+		</action>
+		
+		<!-- 文件下载 -->
+		<action name="simpledownload" class="action.SimpleDownLoadAction">
+      <result name="success" type="stream"> 
+      <!-- 文件类型 -->       
+		<param name="contentType">${contentType}</param>
+		<!-- 指定下载的文件名-->       
+		<param name="contentDisposition">
+		  attachment;filename=${filename}
+		</param>  
+		<!-- 指定被下载文件的入口输入流 -->      
+		<param name="inputName">downloadFile</param>
+	  </result>
+  </action>
+  
+	</package>
+	<include file="action/struts_user.xml"></include>
+	<include file="action/struts_teacher.xml"></include>
+</struts>

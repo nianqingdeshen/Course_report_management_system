@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+        "http://struts.apache.org/dtds/struts-2.5.dtd">
+
+
+<struts>
+	<!-- 配置扩展名 -->
+	<package name="user" extends="struts-default" namespace="/user">
+	
+		<!-- 管理员和学生登录 -->
+		<action name="login" class="action.UserAction" method="login1">
+			<result name="success">/admin/index.jsp</result>
+			<result name="login">/login1.jsp</result>
+		</action>
+		
+		<action name="login1" class="action.UserAction" method="login">
+			<result name="success">/admin/index.jsp</result>
+			<result name="login">/login1.jsp</result>
+		</action>
+		
+		
+		
+		<!-- 老师登录 -->
+		<action name="teacherLogin" class="action.UserAction" method="teacherLogin">
+			<result name="success">/teacher/index.jsp</result>
+			<result name="login">/teacher/login.jsp</result>
+		</action>
+		
+		<!-- 退出登录 -->
+		<action name="exit" class="action.UserAction" method="exit">
+			<result name="success">/teacher/login.jsp</result>
+		</action>
+		
+		<!-- 获取课程设计报告的所有信息 -->
+		<action name="getKcsjList" class="action.Kcsj_courseAction" method="getKcsjList">
+			<result name="success">/admin/kcsjList.jsp</result>
+		</action>
+		
+		<!-- 获取学院的所有信息 -->
+		<action name="getCollegeList" class="action.CollegeAction" method="getCollegeList">
+			<result name="success">/admin/collegeList.jsp</result>
+		</action>
+		
+		<!-- 获取课程的所有信息 -->
+		<action name="getCourseList" class="action.CourseAction" method="getCourseList">
+			<result name="success">/admin/courseList.jsp</result>
+		</action>
+		
+		<!-- 获取班级的所有信息 -->
+		<action name="getClassList" class="action.ClassAction" method="getClassList">
+			<result name="success">/admin/classList.jsp</result>
+		</action>
+		
+		<!-- 获取老师的所有信息 -->
+		<action name="getTeacherList" class="action.TeacherAction" method="getTeacherList">
+			<result name="success">/admin/teacherList.jsp</result>
+		</action>
+		
+		<!-- 获取学生的所有信息 -->
+		<action name="getStudentList" class="action.StudentAction" method="getStudentList">
+			<result name="success">/admin/studentList.jsp</result>
+		</action>
+		
+		<!-- 根据学生ID获取学生的所有信息 -->
+		<action name="getStudentMsg" class="action.StudentAction" method="getStudentMsg">
+			<result name="success">/student/studentMsg.jsp</result>
+		</action>
+		
+		<!--  -->
+		<action name="getStudentMsg2" class="action.StudentAction" method="getStudentMsg">
+			<result name="success">/admin/studentMsg.jsp</result>
+		</action>
+		
+		<action name="getStudentMsg3" class="action.TeacherAction" method="getStudentMsg">
+			<result name="success">/admin/studentMsg1.jsp</result>
+		</action>
+		
+		<!--根据学号查询学生提交过的所有课程设计 -->
+		<action name="getKcsjMsg" class="action.StudentAction" method="getKcsjMsg">
+			<result name="success">/student/kcsjMsg.jsp</result>
+		</action>
+		
+		<!-- 根据学号查询学生所有的课程名称 -->
+		<action name="getKcMsg" class="action.StudentAction" method="getKcMsg">
+			<result name="success">/student/kcMsg.jsp</result>
+		</action>
+		<!--根据教师工号查询教师教授的课程列表(通过老师工号查询课程表)  -->
+		<action name="getKcMsg1" class="action.TeacherAction" method="getKcMsg">
+			<result name="success">/teacher/kcMsg.jsp</result>
+		</action>
+		
+		<action name="getClassMsg" class="action.TeacherAction" method="getClassMsg">
+			<result name="success">/teacher/classMsg.jsp</result>
+		</action>
+		
+		<!-- （老师）通过班级ID查找这个班级的所有学生 -->
+		<action name="getStudentMsg1" class="action.TeacherAction" method="getStudentMsg">
+			<result name="success">/teacher/classMsg.jsp</result>
+		</action>
+		
+		<!-- （管理员）通过班级ID查找这个班级的所有学生 -->
+		<action name="getStudentMsg4" class="action.TeacherAction" method="getStudentMsg">
+			<result name="success">/admin/studentMsg.jsp</result>
+		</action>
+		
+		<!-- （老师）//根据班级ID和课程ID查找课程设计报告的信息 -->
+		<action name="getKcsjMsg1" class="action.TeacherAction" method="getKcsjMsg">
+			<result name="success">/teacher/kcsjMsg.jsp</result>
+		</action>
+		
+		<!-- （管理员）根据班级ID和课程ID查找课程设计报告的信息 -->
+		<action name="getKcsjMsg2" class="action.TeacherAction" method="getKcsjMsg">
+			<result name="success">/admin/kcsjMsg.jsp</result>
+		</action>
+		
+		<!-- //根据工号查询教师的所有信息 -->
+		<action name="getTeacherMsg" class="action.TeacherAction" method="getTeacherMsg">
+			<result name="success">/teacher/teacherMsg.jsp</result>
+		</action>
+		<action name="getTeacherMsg1" class="action.TeacherAction" method="getTeacherMsg">
+			<result name="success">/admin/teacherMsg.jsp</result>
+		</action>
+		
+		<!-- 添加学生 -->
+		<action name="addStudentInput" class="action.StudentAction" method="addStudentInput">
+			<result name="success">/admin/addStudent.jsp</result>
+		</action>
+		<action name="addStudent" class="action.StudentAction" method="addStudent">
+			<result name="success">/admin/index.jsp</result>
+		</action>
+		
+		<!-- 根据studentID删除学生信息 -->
+		<action name="deleteBystudentID" class="action.StudentAction" method="deleteBystudentID">
+			<result name="success">/admin/index.jsp</result>
+		</action>
+		
+		<!-- 管理员修改学生信息 -->
+		<action name="getAllClassList" class="action.StudentAction" method="getAllClassList">
+			<result name="success">/admin/adminUpdateStudent.jsp</result>
+		</action>
+		<action name="adminUpdateStudent" class="action.StudentAction" method="adminUpdateStudent">
+			<result name="success">/admin/index.jsp</result>
+		</action>
+		
+		<!-- 学生修改个人信息 -->
+		<action name="studentUpdate" class="action.StudentAction" method="studentUpdate">
+			<result name="success">/student/studentUpdate.jsp</result>
+		</action>
+		<action name="studentUpdate01" class="action.StudentAction" method="studentUpdate01">
+			<result name="success">/student/welcome.html</result>
+		</action>
+		
+		<!-- 学生修改密码 -->
+		<action name="updateStudentPassword" class="action.StudentAction" method="updateStudentPassword">
+			<result name="success">/student/updateStudentPassword.jsp</result>
+		</action>
+		<action name="upadteStudentPassword01" class="action.StudentAction" method="upadteStudentPassword01">
+			<result name="success">/login.jsp</result>
+			<result name="error">/student/updateStudentPassword.jsp</result>
+		</action>
+	</package>
+</struts>

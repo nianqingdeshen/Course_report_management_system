@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-11-26 16:32:02 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="pojo01.Student" table="student">
+        <id name="studentID" type="java.lang.Integer">
+            <column name="studentID" />
+            <generator class="assigned" />
+        </id>
+        <property name="sname" column="sname" type="java.lang.String"></property>
+        <property name="ssex" column="ssex" type="java.lang.String"></property>
+        <property name="sage" column="sage" type="integer"></property>
+        <property name="password" column="password" type="java.lang.String"></property>
+    
+    	<!-- 学生对班级：多对一 -->
+    	<many-to-one name="class1" 
+        	class="pojo01.Class" column="classID" lazy="false"></many-to-one>
+    
+    </class>
+</hibernate-mapping>

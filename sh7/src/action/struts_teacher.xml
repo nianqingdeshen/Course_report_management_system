@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+        "http://struts.apache.org/dtds/struts-2.5.dtd">
+
+
+<struts>
+	<!-- 配置扩展名 -->
+	<package name="teacher" extends="struts-default" namespace="/teacher">
+	
+	<!-- 老师登录 -->
+		<action name="teacherLogin" class="action.UserAction" method="teacherLogin">
+			<result name="success">/teacher/index.jsp</result>
+			<result name="login">/teacher/login.jsp</result>
+		</action>
+	
+	<!-- 添加老师 -->
+	<action name="addTeacherInput" class="action.TeacherAction" method="addTeacherInput">
+			<result name="success">/admin/addTeacher.jsp</result>
+		</action>
+		<action name="addTeacher" class="action.TeacherAction" method="addTeacher">
+			<result name="success">/admin/welcome.html</result>
+		</action>
+		<!-- 管理员修改老师信息 -->
+		<action name="adminteachertUpdate" class="action.TeacherAction" method="adminteachertUpdate">
+			<result name="success">/admin/admintUpdateTeacher.jsp</result>
+		</action>
+		<action name="adminteachertUpdate01" class="action.TeacherAction" method="adminteachertUpdate01">
+			<result name="success">/admin/welcome.html</result>
+		</action>
+		<!-- 老师修改个人信息 -->
+		<action name="teachertUpdate" class="action.TeacherAction" method="teachertUpdate">
+			<result name="success">/teacher/teacherUpdate.jsp</result>
+		</action>
+		<action name="teacherUpdate01" class="action.TeacherAction" method="teacherUpdate01">
+			<result name="success">/teacher/welcome.html</result>
+		</action>
+		<!-- 老师修改个人密码-->
+		<action name="teacherPassword" class="action.TeacherAction" method="teacherPassword">
+			<result name="success">/teacher/teacherPassword.jsp</result>
+		</action>
+		<action name="teacherPassword01" class="action.TeacherAction" method="teacherPassword01">
+			<result name="success">/teacher/welcome.html</result>
+			<result name="error">/teacher/teacherPassword.jsp</result>
+		</action>
+		
+	</package>
+</struts>

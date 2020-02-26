@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-11-26 16:32:02 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="pojo01.Class" table="class">
+        <id name="classID" type="java.lang.Integer">
+            <column name="classID" />
+            <generator class="assigned"/>
+        </id>
+        <property name="className" column="className" type="java.lang.String"></property>
+
+        <property name="studentNumber" column="studentNumber" type="integer"></property>
+        
+        <!-- 班级对学院：多对一 -->
+        <many-to-one name="college" 
+        class="pojo01.College" column="collegeID"></many-to-one>
+        
+        <!-- 班级对学生：一对多 -->
+        <set name="student">
+    		<key column="classID"/>
+    		<!-- 映射到关联类属性 -->
+    	<one-to-many class="pojo01.Student" ></one-to-many>
+    	</set>
+        
+    </class>
+</hibernate-mapping>

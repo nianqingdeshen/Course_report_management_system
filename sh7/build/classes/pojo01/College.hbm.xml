@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-11-26 16:32:02 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="pojo01.College" table="college">
+        <id name="collegeID" type="integer">
+            <column name="collegeID" />
+            <generator class="assigned" />
+        </id>
+        <property name="collegeName" column="collegeName" type="java.lang.String"></property>
+    	
+    	<set name="teacher">
+    	<key column="collegeID"/>
+    	<one-to-many class="pojo01.Teacher"></one-to-many>
+    	</set>
+    	
+    	<set name="class1">
+    	<key column="collegeID"/>
+    	<one-to-many class="pojo01.Class"></one-to-many>
+    	
+    	</set>
+    	
+    </class>
+</hibernate-mapping>
