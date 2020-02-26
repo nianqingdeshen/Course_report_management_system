@@ -1,0 +1,59 @@
+ 出错
+ 1.org.hibernate.MappingException: Unknown entity: pojo.Teacher
+ 原因：hibernate.cfg.xml 没有配置*.hbm.xml文件
+ 
+ 2.[http-nio-8080-exec-3] ERROR org.apache.struts2.dispatcher.DefaultDispatcherErrorHandler - 
+ Exception occurred during processing request: 
+ [org.hibernate.boot.MappingNotFoundException: 
+ Mapping (RESOURCE) not found : 
+ pojo/College.hbm.xml : 
+ origin(pojo/College.hbm.xml), Mapping (RESOURCE) not found : 
+ pojo/College.hbm.xml : origin(pojo/College.hbm.xml)]
+ 原因：<class name="pojo.College" table="college">  类名College 首字母大写
+ 
+ 3.could not execute query ,org.hibernate.exception.SQLGrammarException: could not execute query
+ 原因：hibernate映射文件 *.hbm.xml的字段类型不配备
+ 
+ 4.*Action.java (System.out.println(ss.getAllClassList());)输出[] 数据库执行查询，但是没有出来结果
+ 原因：原因很多，查询条件的值没有传对，*.hbm.xml文件配置有错等等
+ 解决办法：通过逻辑关系一层层分析
+ 
+ 5.Several ports (8005, 8080, 8009) required by Tomcat v9.0 Server at localhost are already in use. 
+ The server may already be running in another process, or a system process may be using the port. 
+ To start this server you will need to stop the other process or change the port number(s).
+ 原因：eclipse未正常退出，导致Tomcat端口占用。
+ 解决办法：netstat -ano|findstr  8080  （查找占用8080端口的进程）    
+			taskkill  /pid  1952  /f（终止进程）
+			
+ 6.[org.hibernate.MappingException: Could not get constructor for org.hibernate.persister.entity.Single
+ Could not get constructor for org.hibernate.persister.entity.SingleTableEntityPersister
+ 原因不明：
+ 解决办法：将pojo包名修改一下
+ 
+ 7.Could not parse mapping document: pojo/College.hbm.xml
+	原因：hibernate映射文件*.hbm.xml的字段类型不配备||*.hbm.xml配置有其他问题
+
+ 8.could not initialize proxy - no Session
+ 原因:action 重名（相互覆盖）
+ 
+ 9.Unable to create requested service :org.hibernate.engine.jdbc.env.spi.JdbcEnvironment
+ 原因：MySQL服务连接有时限，时限到了会自动关闭MySQL服务
+ 解决办法：重启eclipse，或重启mysql服务
+ 
+ 10.查询输出，输出重复的数据
+ 原因：数据库表没有唯一不重复的列
+ 
+ 11.500： The internal connection pool has reached its maximum size and no connection is currently available!
+ 目前得知的原因：数据库连接池耗尽
+ 解决办法：<property name="connection.pool_size">100</property>（将连接池大小设为100）
+ 
+ 12.action中跳转的页面改了，但是运行还是会跳转到旧的页面
+ 原因：粗心，老师登录在userAction中用forward重定向了
+ 或者是action 重名
+ 
+ 13.教师登录后，教师的主页面样式消失（样式引用路径没错）
+ 原因：action换了临时空间；
+ 
+ 13.action中跳转的页面改了，但是运行还是会跳转到旧的页面
+ 原因不明：不同于12
+ 
